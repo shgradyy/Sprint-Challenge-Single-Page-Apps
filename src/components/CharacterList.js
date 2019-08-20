@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import CharacterCard from "./CharacterCard.js";
+import Header from "./Header.js";
+import TabNav from "./TabNav.js";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -18,8 +21,16 @@ const [character, setCharacter] = useState({name: ""});
   }, []);
 
   return (
+    <>
+    
+    <Header />
+    <TabNav />
     <section className="character-list grid-view">
       <h2>TODO: `array.map()` over your state here!</h2>
+      {character.map(char => {
+        return <CharacterCard char={char} key={char.id} />;
+      })}
     </section>
+    </>
   );
 }
